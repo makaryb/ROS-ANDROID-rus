@@ -529,6 +529,47 @@ public class bar extends RosActivity {
 }
 ```
 
+Теперь файл layout/main.xml
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+
+        <Button
+            android:id="@+id/publishButton"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:text="Publish" />
+
+        <EditText
+            android:id="@+id/stringPublish"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_toRightOf="@+id/publishButton"
+            android:hint=""/>
+
+        <TextView
+            android:id="@+id/stringSubscrib"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subscribe : "
+            android:layout_below="@+id/publishButton"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
+```
+
 Собираем проект, настроиваем .bashrc файл, запускаем в терминале roscore и проверяем на девайсе работоспособность приложения.
 
 На основе уже делаем что-либо свое.
