@@ -46,7 +46,7 @@ source /etc/environment
 
 Через SDK-менеджер установите все, что там есть.
 
-Проверьте, чтобы в папке build-tools были версии 21.1.2, 25.0.2, 28.0.2
+Проверьте, чтобы в папке build-tools были версии 21.1.2, 25.0.2, 26.0.2, 28.0.2
 
 Android-ndk установите 17й версии (https://developer.android.com/ndk/downloads/older_releases).
 
@@ -223,7 +223,7 @@ android {
 
 Позже можете все переименовать (как название приложения, так и темы, и иконку (здесь ее имя ic_launcher и находится она в папке drawable).
 
-В папке android_foo в файле build-gradle заменяете то, что было на месте task-wrapper и build-script на 
+В папке android_foo в файле build-gradle заменяете все на 
 
 ```
 task wrapper(type: Wrapper) {
@@ -239,9 +239,41 @@ buildscript {
         google()
     }
 }
-```
 
-Остальное не трогаете.
+configure(subprojects.findAll { it.name.startsWith("android_") }) {
+    apply plugin: "ros-android"
+        afterEvaluate { project ->
+            // Change the layout of Android projects to be compatible with Eclipse.
+            android {
+                sourceSets {
+                    //noinspection GroovyAssignabilityCheck
+                    main {
+                        manifest.srcFile "AndroidManifest.xml"
+                        res.srcDirs "res"
+                        assets.srcDirs "assets"
+                        java.srcDirs "src"
+                    }
+                }
+                packagingOptions {
+                /* https://github.com/rosjava/android_core/issues/194 */
+                exclude "META-INF/LICENSE.txt"
+                exclude "META-INF/NOTICE.txt"
+            }
+
+            lintOptions {
+                abortOnError false
+            }
+        }
+    }
+}
+
+defaultTasks 'assembleRelease', 'uploadArchives'
+
+repositories {
+    google()
+}
+    
+```
 
 Синхронизируем в Android-studio проект с gradle-файлом.
 
@@ -334,7 +366,7 @@ public class MessagePub<T> implements NodeMain {
 И файл MessageSub.java
 
 ```
-package org.ros.android;
+package org.ros.rosjava_pubsub;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
