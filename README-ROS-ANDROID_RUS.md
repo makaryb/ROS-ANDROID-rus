@@ -583,7 +583,7 @@ roscore
 Автор туториала на русском:
 * **Makary Boriskin** -  КБПО, ЦНИИ РТК (boriskin.ma@edu.spbstu.ru)
 
-Смотрите более подробнее
+Подробнее:
 http://wiki.ros.org/android/Tutorials/kinetic
 
 Может пригодиться, будет интересно:
