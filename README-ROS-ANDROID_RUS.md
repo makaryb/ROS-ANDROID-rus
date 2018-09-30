@@ -4,7 +4,7 @@
 
 ## Начало
 
-Проверено на Ubuntu 18.04, ROS melodic, Android-Studio 3.2
+Ubuntu 18.04, ROS melodic, Android-Studio 3.2
 
 Запустите Ubuntu.
 
