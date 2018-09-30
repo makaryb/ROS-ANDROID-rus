@@ -547,7 +547,7 @@ cd
 gedit .bashrc
 ```
 
-Довляем в конце:
+Добавляем в конце:
 
 ```
 source /opt/ros/melodic/setup.bash
