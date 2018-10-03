@@ -107,8 +107,8 @@ cd ~/android_core
 В файле укажите путь к Android SDK и NDK:
 
 ```
-sdk.dir=/home/имя_компьютера/Android/Sdk
-ndk.dir=/home/имя_компьютера/Android/Sdk/ndk-bundle
+sdk.dir=/home/имя_пользователя/Android/Sdk
+ndk.dir=/home/имя_пользователя/Android/Sdk/ndk-bundle
 ```
 
 (если ваша Android NDK 17 находится там)
